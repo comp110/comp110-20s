@@ -31,4 +31,14 @@ export let sumRow = (row: number): number => {
     return 0;
 };
 
+/*
+This function is used only to make the 
+autograder give better feedback. You 
+should completely ignore it. If you have
+questions, you can ask us in office hours.
+*/
+export let setPlayer = (p: number) => {
+    player = p;
+};
+
 main();
