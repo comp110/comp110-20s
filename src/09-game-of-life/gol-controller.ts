@@ -29,6 +29,7 @@ export class GameOfLifeController {
         this.stopButton = document.getElementById("stop") as HTMLButtonElement;
         this.clearButton = document.getElementById("clear") as HTMLButtonElement;
 
+        model.reset();
         this.initEvents();
     }
 
