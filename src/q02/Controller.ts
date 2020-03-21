@@ -1,16 +1,46 @@
-import { Person } from "./Person";
+import { Cell } from "./Cell";
+import { View } from "./View";
+import { Model } from "./Model";
 
 export class Controller {
-    model: Person[];
+
+    model: Model;
+    view: View;
     animationInterval: number;
 
-    cosntructor(model: Person[], view: View) {
+    constructor(model: Model, view: View) {
         this.model = model;
+        this.view = view;
+        this.animationInterval = -1;
+        this.initControls();
+        this.reset();
+    }
+
+    initControls(): void {
+        this.view.onPlay = () => this.play();
+        this.view.onPause = () => this.pause();
+        this.view.onReset = () => this.reset();
+    }
+
+    reset(): void {
+        this.model.reset();
+        this.view.render();
+    }
+
+    play(): void {
+        if (this.animationInterval < 0) {
+            this.animationInterval = window.setInterval(() => this.tick(), 16.67);
+        }
+    }
+
+    pause(): void {
+        window.clearInterval(this.animationInterval);
         this.animationInterval = -1;
     }
 
-    play() {
-
+    tick(): void {
+        this.model.tick();
+        this.view.render();
     }
 
 }

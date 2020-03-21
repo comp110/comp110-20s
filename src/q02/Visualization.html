@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualization</title>
     <style>
-        canvas { background: #000; }
+        body { text-align: center; margin: 10px; font-family: sans-serif; }
+        canvas { background: #000; border: 5px solid gray; }
+        table { margin: 0 auto; }
     </style>
 </head>
 <body>
     <canvas id="viewport" width="500" height="500"></canvas>
+    <div id="controls">
+        <button id="play">Play</button>
+        <button id="pause">Pause</button>
+        <h2>Parameters</h2>
+        <table id="parameters">
+            <tr>
+                <td>N Cells</td>
+                <td><input type="text" name="n" id="n"></td>
+            </tr>
+            <tr>
+                <td>Velocity</td>
+                <td><input type="text" name="v" id="v"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button id="reset">Reset</button></td>
+            </tr>
+        </table>
+    </div>
     <script src="./simulation-script.ts"></script> 
 </body>
 </html>

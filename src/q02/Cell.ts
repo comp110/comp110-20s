@@ -1,22 +1,24 @@
 import { Point } from "./Point";
-import { byChance } from "./Stochastic";
 
-export class Person {
+export class Cell {
 
     location: Point;
     direction: Point;
+    velocity: number;
 
     infection: number = -1;
     immune: boolean = false;
 
-    constructor(location: Point) {
+    constructor(location: Point, velocity: number) {
         this.location = location;
-        this.changeDirection();
+        this.velocity = velocity;
+        this.randomDirection();
     }
 
-    changeDirection() {
-        let dx = (Math.random() - 0.5) * 1;
-        let dy = (Math.random() - 0.5) * 1;
+    randomDirection() {
+        let direction = Math.random() * 2 * Math.PI;
+        let dx = Math.cos(direction) * this.velocity;
+        let dy = Math.sin(direction) * this.velocity;
         this.direction = new Point(dx, dy);
     }
 
@@ -33,7 +35,7 @@ export class Person {
     tick() {
         if (this.isInfected()) {
             this.infection++;
-            if (this.infection > 100) {
+            if (this.infection > 300) {
                 this.infection = -1;
                 this.immune = true;
             }
@@ -41,7 +43,7 @@ export class Person {
         this.location = this.direction.addWith(this.location);
     }
 
-    contact(other: Person) {
+    contact(other: Cell) {
         if (this.isInfected() && !other.isInfected()) {
             other.infect();
         } else if (other.isInfected() && !this.isInfected()) {
