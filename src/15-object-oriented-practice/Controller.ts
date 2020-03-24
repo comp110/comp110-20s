@@ -1,6 +1,7 @@
 import { Cell } from "./Cell";
 import { View } from "./View";
 import { Model } from "./Model";
+import { print, clear } from "introcs";
 
 export class Controller {
 
@@ -23,8 +24,12 @@ export class Controller {
     }
 
     reset(): void {
+        clear();
         this.model.reset();
         this.view.render();
+        if (this.animationInterval === -1) {
+            this.play();
+        }
     }
 
     play(): void {

@@ -25,16 +25,13 @@ export class View {
         let scale = 5;
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         for (let i = 0; i < this.model.population.length; i++) {
-            let person = this.model.population[i];
+            let cell = this.model.population[i];
             let p = this.model.population[i].location;
             let x = scale * p.x;
             let y = scale * p.y;
-            if (person.isInfected()) {
+            if (cell.isSick()) {
                 this.context.fillStyle = "red";
                 this.context.strokeStyle = "red";
-            } else if (person.immune) {
-                this.context.fillStyle = "#58D68D";
-                this.context.strokeStyle = "#58D68D";
             } else {
                 this.context.fillStyle = "whitesmoke";
                 this.context.strokeStyle = "whitesmoke";

@@ -20,7 +20,9 @@ export class Point {
     }
 
     addWith(other: Point): Point {
-        return new Point(this.x + other.x, this.y + other.y);
+        let x = this.x + other.x;
+        let y = this.y + other.y;
+        return new Point(x, y);
     }
 
     toString(): string {
