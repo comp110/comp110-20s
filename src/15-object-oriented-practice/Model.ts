@@ -13,6 +13,7 @@ export class Model {
     constructor(n: number, velocity: number) {
         this.n = n;
         this.velocity = velocity;
+        this.reset();
     }
 
     reset(): void {
