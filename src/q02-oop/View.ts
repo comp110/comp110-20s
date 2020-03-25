@@ -30,8 +30,8 @@ export class View {
             let x = scale * p.x;
             let y = scale * p.y;
             if (cell.isSick()) {
-                this.context.fillStyle = "#FF6600";
-                this.context.strokeStyle = "#FF6600";
+                this.context.fillStyle = "#FF0000";
+                this.context.strokeStyle = "#FF0000";
             } else if (cell.isImmune !== undefined && cell.isImmune()) {
                 this.context.fillStyle = "#0F0";
                 this.context.strokeStyle = "#0F0";

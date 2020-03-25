@@ -46,6 +46,13 @@ export class Controller {
     tick(): void {
         this.model.tick();
         this.view.render();
+        let model = this.model as any;
+        if (model.steadyState !== undefined && model.steadyState()) {
+            if (model.percentGotSick !== undefined) {
+                print("% got sick: " + model.percentGotSick());
+            }
+            this.pause();
+        }
     }
 
 }
